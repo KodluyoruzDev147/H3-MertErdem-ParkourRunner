@@ -8,7 +8,8 @@ namespace Game.PlayerControl
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private GameObject playerBase;
-        [SerializeField] private Transform targetPos;
+        [SerializeField] private Transform finishLine;
+        private Vector3 targetPos;
         //inputs
         private float horizontal = 0;
         [SerializeField] private Joystick joystick;
@@ -23,6 +24,7 @@ namespace Game.PlayerControl
         private State currentState;
         private IdleState idleState;
         private RunState runState;
+        private DanceState danceState;
 
 
         private void Awake()
@@ -32,8 +34,14 @@ namespace Game.PlayerControl
             rigidBody = GetComponent<Rigidbody>();
             animator = playerBase.GetComponent<Animator>();
 
+            targetPos = new Vector3(
+                transform.position.x,
+                transform.position.y,
+                finishLine.position.z + 6);
+
             idleState = new IdleState(this);
             runState = new RunState(this);
+            danceState = new DanceState(this);
             SetState(idleState);
         }
 
@@ -60,12 +68,12 @@ namespace Game.PlayerControl
         {
             transform.position = Vector3.MoveTowards(
                         transform.position,
-                        targetPos.position,
+                        targetPos,
                         speed * Time.fixedDeltaTime);
 
-            var playerBasePos = playerBase.transform.position;
+            var playerBasePos = playerBase.transform.localPosition;
             playerBasePos.x = Mathf.Clamp(playerBasePos.x + horizontal * horizontalSpeed * Time.fixedDeltaTime, -2f, 2f);
-            playerBase.transform.position = playerBasePos;
+            playerBase.transform.localPosition = playerBasePos;
         }
 
         //action method
@@ -87,7 +95,20 @@ namespace Game.PlayerControl
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Obstacle"))
+            {
                 StartCoroutine(PushBack());
+            }
+                
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Finish"))
+            {
+                SetState(danceState);
+                GameManager.ActionFinish?.Invoke();
+            }
+                
         }
 
         private void OnDestroy()

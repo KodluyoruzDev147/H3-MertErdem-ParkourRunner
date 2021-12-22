@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.PlayerControl
 {
-    public abstract class State : MonoBehaviour
+    public abstract class State
     {
         protected PlayerController player;
         protected Animator animator;
@@ -49,6 +49,24 @@ namespace Game.PlayerControl
         public override void OnUpdate()
         {
             player.Move();
+        }
+    }
+
+    public class DanceState : State
+    {
+        public DanceState(PlayerController player) : base(player)
+        {
+
+        }
+
+        public override void OnStateEnter()
+        {
+            animator.SetTrigger("Dance");
+        }
+
+        public override void OnUpdate()
+        {
+
         }
     }
 }
