@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,6 +47,10 @@ namespace Game.PlayerControl
 
         void Update()
         {
+            /* ZTK was here
+             * Bu tarz oyun kontrolleri Joystick mantığında değil daha çok slide kontrolleri kullanılır.
+             * Slide derken parmağın yaptığı hareket kadar oyun karakteri hareket edecek şekilde.
+             */
             horizontal = joystick.Horizontal;
         }
 

@@ -1,9 +1,23 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.PlayerControl
 {
+    /* ZTK was here
+     * Çok güzel state machine sistemi.
+     * Bu tarz yaklaşımın sıkıntıları;
+     * 
+     * Her yeni state için yeni class oluşturulması gerekiyor
+     * Her state bir class olduğu için erişim sıkıntısı çekilebilir
+     * Bu koşula özel bir state machine yazılması şart oluyor, yani başka projede kullanılması zorlaşıyor.
+     * 
+     * On StateEnter, Exit ve Update methodları tanımlanması yerine bunlar bir delegate şeklinde tutulsa.
+     * Bu state machine i kullanmak isteyen class kendi içerisindeki methodlardan buraya delegate olarak yönlendirse.
+     * Hem farklı classlarda kullanılabilir,
+     * Hem her class kendi içindeki bir method u gönderdiği için class verilerine erişim sıkıntısı çekmez,
+     * Hem de state machine sistemin oyun kodlarından tamamen habersiz olacağı için farklı projelerde rahatlıkla kullanılabilir olur.
+     */
     public abstract class State
     {
         protected PlayerController player;
