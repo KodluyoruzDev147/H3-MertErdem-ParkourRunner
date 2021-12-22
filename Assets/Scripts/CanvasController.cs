@@ -4,5 +4,21 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-    public void DeactivateElement(GameObject uiElement) => uiElement.SetActive(false); 
+    [SerializeField] private GameObject canvasMenu, canvasGame;
+
+    private void Awake()
+    {
+        GameManager.ActionStart += SetInGameUI;
+    }
+
+    private void SetInGameUI()
+    {
+        canvasMenu.SetActive(false);
+        canvasGame.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.ActionStart -= SetInGameUI;
+    }
 }

@@ -8,19 +8,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerBase;
     [SerializeField] private Transform finishLane;
     private Vector3 targetPos;
-    //specs
-    [SerializeField] [Range(0f, 10f)] private float speed = 10f, horizontalSpeed = 5f;
+
     //inputs
     private float horizontal = 0;
+    [SerializeField] private Joystick joystick;
+
+    [Header("Speed Settings")]
+    [SerializeField] [Range(0f, 10f)] private float speed = 10f;
+    [SerializeField] [Range(0f, 10f)] private float horizontalSpeed = 5f;
+ 
     //components
     private Animator animator;
 
     private bool isRunning = false;
-
+    
 
     private void Awake()
     {
-        GameManager.ActionStart += Run;
+        GameManager.ActionStart += StartRunning;
 
         targetPos = new Vector3(
             transform.position.x,
@@ -32,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = joystick.Horizontal;
     }
 
     private void FixedUpdate()
@@ -53,7 +58,7 @@ public class PlayerController : MonoBehaviour
         playerBase.transform.position = playerBasePos;
     }
 
-    private void Run()
+    private void StartRunning()
     {
         isRunning = true;
         animator.SetTrigger("Run");
@@ -61,6 +66,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.ActionStart -= Run;
+        GameManager.ActionStart -= StartRunning;
     }
 }

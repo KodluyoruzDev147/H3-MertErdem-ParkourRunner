@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static UnityAction ActionStart;
 
-    public void ActivateActionStart()
-    {
-        ActionStart?.Invoke();
-    }
+    //start button's method
+    public void ActivateActionStart() => ActionStart?.Invoke();
 }
