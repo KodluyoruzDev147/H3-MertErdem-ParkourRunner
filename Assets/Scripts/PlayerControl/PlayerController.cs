@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.PlayerControl
@@ -11,8 +10,7 @@ namespace Game.PlayerControl
         [SerializeField] private Transform finishLine;
         private Vector3 targetPos;
         //inputs
-        private float horizontal = 0;
-        [SerializeField] private Joystick joystick;
+        private float horizontal = 0f;
         //specs
         [Header("Speed Settings")]
         [SerializeField] [Range(0f, 10f)] private float speed = 10f;
@@ -51,7 +49,26 @@ namespace Game.PlayerControl
              * Bu tarz oyun kontrolleri Joystick mantığında değil daha çok slide kontrolleri kullanılır.
              * Slide derken parmağın yaptığı hareket kadar oyun karakteri hareket edecek şekilde.
              */
-            horizontal = joystick.Horizontal;
+            #region Getting Input
+#if UNITY_EDITOR
+            horizontal = Input.GetAxisRaw("Horizontal");
+#elif UNITY_ANDROID
+             if (Input.touchCount > 0)
+            {
+                var touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    horizontal = touch.deltaPosition.normalized.x;
+                }
+
+                if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+                {
+                    horizontal = 0f;
+                }
+            }
+#endif
+            #endregion
         }
 
         private void FixedUpdate()
@@ -99,10 +116,7 @@ namespace Game.PlayerControl
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Obstacle"))
-            {
                 StartCoroutine(PushBack());
-            }
-                
         }
 
         private void OnTriggerExit(Collider other)

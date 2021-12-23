@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game.PlayerControl
 {
@@ -18,6 +16,8 @@ namespace Game.PlayerControl
      * Hem her class kendi içindeki bir method u gönderdiği için class verilerine erişim sıkıntısı çekmez,
      * Hem de state machine sistemin oyun kodlarından tamamen habersiz olacağı için farklı projelerde rahatlıkla kullanılabilir olur.
      */
+
+    
     public abstract class State
     {
         protected PlayerController player;
@@ -83,4 +83,6 @@ namespace Game.PlayerControl
 
         }
     }
+    
+
 }
