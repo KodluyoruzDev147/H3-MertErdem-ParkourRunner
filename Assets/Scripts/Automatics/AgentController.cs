@@ -58,6 +58,7 @@ namespace Game.Automatics
                 agent.isStopped = true;
                 animator.SetTrigger("Dance");
                 CompetitionManager.LeaveCompetition(this.gameObject);
+                GameManager.ActionStart -= Move;
             }               
         }
 
