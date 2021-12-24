@@ -18,6 +18,8 @@ namespace Game.Automatics
 
         private void Awake()
         {
+            GameManager.ActionStart += Move;
+            
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody>();
@@ -26,8 +28,11 @@ namespace Game.Automatics
                 transform.position.x,
                 transform.position.y,
                 finishLine.position.z + 6);
+        }
 
-            GameManager.ActionStart += Move;
+        private void Start()
+        {
+            CompetitionManager.JoinCompetition(this.gameObject);
         }
 
         private void Move()
@@ -52,6 +57,7 @@ namespace Game.Automatics
                 agent.velocity = Vector3.zero;
                 agent.isStopped = true;
                 animator.SetTrigger("Dance");
+                CompetitionManager.LeaveCompetition(this.gameObject);
             }               
         }
 

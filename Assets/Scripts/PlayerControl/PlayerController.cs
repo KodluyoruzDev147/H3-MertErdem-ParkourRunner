@@ -28,7 +28,7 @@ namespace Game.PlayerControl
         private void Awake()
         {
             GameManager.ActionStart += StartRunning;
-
+            
             rigidBody = GetComponent<Rigidbody>();
             animator = playerBase.GetComponent<Animator>();
 
@@ -41,6 +41,11 @@ namespace Game.PlayerControl
             runState = new RunState(this);
             danceState = new DanceState(this);
             SetState(idleState);
+        }
+
+        private void Start()
+        {
+            CompetitionManager.JoinCompetition(gameObject);
         }
 
         void Update()
@@ -125,8 +130,8 @@ namespace Game.PlayerControl
             {
                 SetState(danceState);
                 GameManager.ActionFinish?.Invoke();
+                CompetitionManager.LeaveCompetition(this.gameObject);
             }
-                
         }
 
         private void OnDestroy()

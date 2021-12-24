@@ -5,6 +5,11 @@ public class GameManager : MonoBehaviour
 {
     public static UnityAction ActionStart, ActionFinish;
 
-    //start button's method
+    #region UI Buttons' Methods
     public void ActivateActionStart() => ActionStart?.Invoke();
+
+    public void Restart() { }
+
+    public void LoadNextLevel() { }
+    #endregion
 }

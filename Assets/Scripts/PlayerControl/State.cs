@@ -17,6 +17,27 @@ namespace Game.PlayerControl
      * Hem de state machine sistemin oyun kodlarından tamamen habersiz olacağı için farklı projelerde rahatlıkla kullanılabilir olur.
      */
 
+
+    /*
+    public class State
+    {
+        public delegate void OnUpdate();
+        public OnUpdate onUpdate;
+
+        public delegate void OnStateEnter();
+        public OnStateEnter onStateEnter;
+
+        public delegate void OnStateExit();
+        public OnStateExit onStateExit;
+
+        public State(OnUpdate onUpdate, OnStateEnter onStateEnter, OnStateExit onStateExit)
+        {
+            this.onUpdate = onUpdate;
+            this.onStateEnter = onStateEnter;
+            this.onStateExit = onStateExit;
+        }
+    }
+    */
     
     public abstract class State
     {
