@@ -567,28 +567,6 @@ MonoBehaviour:
   canvasGame: {fileID: 2017094186}
   canvasEnd: {fileID: 1674725812}
   textPlayerRank: {fileID: 1423812384}
---- !u!1 &352463671 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1927155207695779812, guid: 8c391e0923d3b4eefa2833340c116cd1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7585205234253014759}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &352463676
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352463671}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.75, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!4 &367950822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 803062493597236921, guid: 1db2e8eee02054052b89a22fa85c3e4a,
@@ -654,7 +632,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460628957}
-  m_LocalRotation: {x: 0.11909167, y: 0.000000004270982, z: -5.1228405e-10, w: 0.99288327}
+  m_LocalRotation: {x: 0.11909167, y: -0.000000004270982, z: 5.1228405e-10, w: 0.99288327}
   m_LocalPosition: {x: 38.378567, y: 21.189297, z: 33.426563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1630,28 +1608,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1008609182}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1036024534 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 803062493597236925, guid: 1db2e8eee02054052b89a22fa85c3e4a,
-    type: 3}
-  m_PrefabInstance: {fileID: 803062493787391327}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &1036024538
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036024534}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.75, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &1050703925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2092,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1050703926}
     m_Modifications:
+    - target: {fileID: 2280728240894008591, guid: 69f95d4827a7f469ea22ffb1a0e5c59b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 858cc087ccf9f48558abb4538b8c6f95, type: 2}
     - target: {fileID: 8404183899938209185, guid: 69f95d4827a7f469ea22ffb1a0e5c59b,
         type: 3}
       propertyPath: m_Name
@@ -3580,11 +3541,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Static Obstacle
       objectReference: {fileID: 0}
-    - target: {fileID: 803062493597236925, guid: 1db2e8eee02054052b89a22fa85c3e4a,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1db2e8eee02054052b89a22fa85c3e4a, type: 3}
 --- !u!1001 &1947501746032228238
@@ -3732,7 +3688,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: acf2159ec3eba48b3b71606c64e2f273, type: 2}
+      objectReference: {fileID: 2100000, guid: 4860790fe2cbd4102a582793a549a680, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1230e83b52c144ac283fd7f1df0992ee, type: 3}
 --- !u!1001 &6242706634890373045
@@ -3837,11 +3793,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dynamic Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1927155207695779812, guid: 8c391e0923d3b4eefa2833340c116cd1,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8893139424804875001, guid: 8c391e0923d3b4eefa2833340c116cd1,
         type: 3}
